@@ -10,9 +10,10 @@ import Vues.VueApplication;
  */
 public class App {
 	public static void main(String[] args) {
-		ModeleApplication modele = new ModeleApplication();
-		VueApplication vue = new VueApplication("GED - Projet ISTY", modele);
-		ControleurApplication controleur = new ControleurApplication(modele,
-				vue);
+		ModeleApplication modeleApp = new ModeleApplication();
+		VueApplication vueApp = new VueApplication("GED - Projet ISTY",
+				modeleApp);
+		ControleurApplication controleurApp = new ControleurApplication(
+				modeleApp, vueApp);
 	}
 }
