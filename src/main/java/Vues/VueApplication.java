@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import Modele.ModeleApplication;
 
 public class VueApplication extends JFrame implements Observer {
-	private ModeleApplication modeleApp;
+	private ModeleApplication modeleApplication;
 	private final static int LARG_ECRAN = 900;
 	private final static int HAUT_ECRAN = 700;
 
@@ -28,17 +28,17 @@ public class VueApplication extends JFrame implements Observer {
 
 	private JPanel panelGlobal;
 	// private JPanel panelInfo; //Creer un nouveau borderlayout
-	private VueTags panelTags;
+	private VueTag panelTags;
 	private VueSeries panelSeries;
 	private VueCommandes panelCommandes;
 	private VueLecture panelLecture;
 	private VueListe panelListe;
-	private VueApercu panelApercu;
+	private VueMetaDonnee panelApercu;
 	private VueRecherche panelRecherche;
 
-	public VueApplication(String parT, ModeleApplication modeleApp) {
+	public VueApplication(String parT, ModeleApplication modeleApplication) {
 		super(parT);
-		this.modeleApp = modeleApp;
+		this.modeleApplication = modeleApplication;
 		initComponents();
 		// this.paintComponent(this.getGraphics());
 		setSize(LARG_ECRAN, HAUT_ECRAN);
@@ -47,11 +47,6 @@ public class VueApplication extends JFrame implements Observer {
 
 		pack(); // Redimensionne la fenetre a la taille de son contenu
 		setVisible(true);
-		/*
-		 * ImageIcon icon = new ImageIcon("backgrounds//gdeFond7.jpg");
-		 * panelLecture.setImage(icon);
-		 */
-
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
@@ -62,16 +57,21 @@ public class VueApplication extends JFrame implements Observer {
 		panelGlobal = new JPanel();
 		setContentPane(panelGlobal);
 		/* Instanciation des panels */
-		panelTags = new VueTags();
+		panelTags = new VueTag();
 		panelSeries = new VueSeries();
 		panelCommandes = new VueCommandes();
 		panelLecture = new VueLecture();
 		panelListe = new VueListe();
 		panelRecherche = new VueRecherche();
-		panelApercu = new VueApercu();
+		panelApercu = new VueMetaDonnee(modeleApplication.getModeleMetadonnee());
 
 		/* Background */
-		panelGlobal.setBackground(Color.white);
+		panelGlobal.setBackground(new Color(12, 65, 127));
+		/*
+		 * ImageIcon icon = new ImageIcon("img//gdeFond10.jpg"); JLabel img =
+		 * new JLabel(icon);
+		 */
+		// panelGlobal.add(img);
 		/* GridBagLayout */
 		panelGlobal.setLayout(new GridBagLayout());
 		GridBagConstraints gBCons = new GridBagConstraints();

@@ -1,27 +1,19 @@
 package Modele;
 
 import java.util.ArrayList;
-import java.util.List;
 
+public class ModeleSerie {
+	public ArrayList<ModeleMetadonnee> listeMetaDonnees;
+	public ModeleTag modeleTag;
 
+	public ModeleSerie() {
+		listeMetaDonnees = new ArrayList();
+	}
 
-public class ModeleSerie
-{
-	public List<ModeleMetadonnees> serie;
-	public ModeleTags modeleTags;
-	
-	public ModeleSerie()
-	{
-		serie = new ArrayList();
+	public void addn(int n, ModeleMetadonnee m) {
+		listeMetaDonnees.add(n, m);
 	}
-	
-	public void addn(int n,ModeleMetadonnees m)
-	{
-		serie.add(n,m);
-	}
-	
-	public void addTags(String s)
-	{
-		modeleTags.addTags(s);
-	}
+	/*
+	 * public void addTags(String s) { modeleTag.addTags(s); }
+	 */
 }

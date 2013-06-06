@@ -10,11 +10,13 @@ import javax.swing.table.TableModel;
 public class VueListe extends JPanel {
 	public VueListe() {
 		setBorder(new TitledBorder("Liste")); // Titre du panel
+		// setBackground(Color.white);
 		setOpaque(false);
 		// CONTROLEUR
 		TableModel dataModel = new AbstractTableModel() {
+
 			public int getColumnCount() {
-				return 1;
+				return 3;
 			}
 
 			public int getRowCount() {

@@ -19,23 +19,25 @@ public class VueCommandes extends JPanel implements ActionListener {
 	public VueCommandes() {
 		setBorder(new TitledBorder("Commandes")); // Titre du panel
 		/* Background */
-		ImageIcon icon = new ImageIcon("backgrounds//gdeFond3.jpg");
+		setOpaque(false);
+		// setBackground(Color.white);
+		ImageIcon icon = new ImageIcon("img//gdeFond3.jpg");
 		JLabel img = new JLabel(icon);
 		// add(img);
 		this.setLayout(new GridLayout(1, 5, 8, 8));
-		ajoutFichier = new JButton("+Fichier");
+		ajoutFichier = new JButton(new ImageIcon("img//plus.jpg"));
 		// ajoutFichier.add(img);
 		ajoutFichier.setEnabled(true);
 		this.add(ajoutFichier);
 		ajoutFichier.addActionListener(this);
 
-		JButton retraitFichier = new JButton("-Fichier");
+		JButton retraitFichier = new JButton(new ImageIcon("img//moins.jpg"));
 		// retraitFichier.add(img);
 		this.add(retraitFichier);
-		JButton editMeta = new JButton("edit Meta");
+		JButton editMeta = new JButton("MAJ Donnees");
 		// editMeta.add(img);
 		this.add(editMeta);
-		JButton lectureFichier = new JButton("Lecture");
+		JButton lectureFichier = new JButton("Play !");
 		// lectureFichier.add(img);
 		this.add(lectureFichier);
 	}

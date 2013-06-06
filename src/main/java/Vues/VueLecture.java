@@ -1,22 +1,24 @@
 package Vues;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 public class VueLecture extends JPanel {
-	private Object doc;
 
 	public VueLecture() {
 		setBorder(new TitledBorder("Lecture")); // Titre du panel
 		/* Background */
-
+		setBackground(Color.white);
+		// setOpaque(false);
 		// redimensionner
 		// ImageIcon icon = new ImageIcon(new
-		// ImageIcon("backgrounds//gdeFond2.jpg").getImage().getScaledInstance(this.getHeight(),
+		// ImageIcon("img//gdeFond2.jpg").getImage().getScaledInstance(this.getHeight(),
 		// this.getWidth(), Image.SCALE_DEFAULT));
-		ImageIcon icon = new ImageIcon("backgrounds//gdeFond2.jpg");
+		ImageIcon icon = new ImageIcon("img//gdeFond2.jpg");
 		JLabel img = new JLabel(icon);
 		add(img);
 	}
