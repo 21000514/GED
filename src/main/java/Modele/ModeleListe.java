@@ -1,5 +1,7 @@
 package Modele;
 
-public class ModeleListe {
+import java.util.Observable;
+
+public class ModeleListe extends Observable {
 
 }

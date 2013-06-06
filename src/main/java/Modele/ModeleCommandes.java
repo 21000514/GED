@@ -1,5 +1,7 @@
 package Modele;
 
-public class ModeleCommandes {
+import java.util.Observable;
+
+public class ModeleCommandes extends Observable {
 
 }

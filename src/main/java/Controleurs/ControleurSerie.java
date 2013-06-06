@@ -1,5 +1,14 @@
 package Controleurs;
 
-public class ControleurSerie {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ControleurSerie implements ActionListener {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
+	}
 
 }

@@ -2,8 +2,9 @@ package Modele;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
-public class ModeleMetadonnee {
+public class ModeleMetadonnee extends Observable {
 	private String chemin;
 	private String nom;
 	private int taille;

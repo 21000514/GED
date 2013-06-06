@@ -1,6 +1,8 @@
 package Modele;
 
-public class ModeleTag {
+import java.util.Observable;
+
+public class ModeleTag extends Observable {
 
 	private String nom;
 
