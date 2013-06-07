@@ -1,5 +1,6 @@
 package Modele;
 
+import java.io.File;
 import java.util.Observable;
 
 public class ModeleApplication extends Observable {
@@ -10,7 +11,7 @@ public class ModeleApplication extends Observable {
 	public ModeleApplication() {
 		// ArrayList<ModeleMetadonnee> listeMetaDonnees = new
 		// ArrayList<ModeleMetadonnee>();
-		modeleMetadonnee = new ModeleMetadonnee();
+		modeleMetadonnee = new ModeleMetadonnee(new File("docs//test1.txt"));
 	}
 
 	public ModeleMetadonnee getModeleMetadonnee() {

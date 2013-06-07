@@ -98,12 +98,12 @@ public class VueApplication extends JFrame implements Observer {
 		gBCons.gridheight = 1;
 		gBCons.gridx = 1;
 		panelApercu.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
-				HAUT_ECRAN * 5 / 12));
+				HAUT_ECRAN * 4 / 12));
 		panelGlobal.add(panelApercu, gBCons);
 		gBCons.gridy = 2;
-		panelSeries.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
-				HAUT_ECRAN * 4 / 12));
-		panelGlobal.add(panelSeries, gBCons);
+		panelTags.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
+				HAUT_ECRAN * 5 / 12));
+		panelGlobal.add(panelTags, gBCons);
 		gBCons.gridx = 0;
 		gBCons.gridy = 3;
 		panelListe.setPreferredSize(new Dimension(LARG_ECRAN * 3 / 4,
@@ -112,9 +112,9 @@ public class VueApplication extends JFrame implements Observer {
 
 		// gBCons.gridheight = 1;
 		gBCons.gridx = 1;
-		panelTags.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
+		panelSeries.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
 				HAUT_ECRAN * 3 / 12));
-		panelGlobal.add(panelTags, gBCons);
+		panelGlobal.add(panelSeries, gBCons);
 
 	}
 

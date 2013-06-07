@@ -10,4 +10,9 @@ public class ModeleTag extends Observable {
 		this.nom = nom;
 	}
 
+	@Override
+	public String toString() {
+		return nom;
+	}
+
 }
