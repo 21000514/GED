@@ -1,33 +1,32 @@
 package Vues;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.border.TitledBorder;
 
-import Modele.ModeleMetadonnee;
+import Modele.Metadonnee;
 
-public class VueMetaDonnee extends JPanel {
-	private ModeleMetadonnee modeleMetadonnee;
+public class VueMetaDonnee extends JPanel implements Observer {
+	private Metadonnee metadonnee;
 	private JLabel img;
 	private JTextArea texte;
 
-	public VueMetaDonnee(ModeleMetadonnee modeleMetadonnee) {
-		this.modeleMetadonnee = modeleMetadonnee;
-		setBorder(new TitledBorder("Apercu")); // Titre du panel
-		setBackground(Color.white);
-		// JLabel img = new JLabel(new ImageIcon(modeleMetadonnee.getIcone()));
-		// JLabel img = new JLabel(new ImageIcon("img//notFound.jpg"));
-		img = new JLabel(new ImageIcon(modeleMetadonnee.getCheminIcone()));
+	public VueMetaDonnee(Metadonnee metadonnee) {
+		this.metadonnee = metadonnee;
+		img = new JLabel(new ImageIcon(metadonnee.getCheminIcone()));
 		add(img);
-		texte = new JTextArea(modeleMetadonnee.toString());
-		Dimension d = new Dimension(5, 30);
-		texte.setMaximumSize(d);
+		texte = new JTextArea(metadonnee.toString());
+		// texte.setMaximumSize(new Dimension(5, 30));
 		texte.setEditable(false);
+		// texte.setCaretPosition(texte.getDocument().getLength());//place le
+		// curseur de saisie a la fin
+		texte.setOpaque(false);
+		// texte.setBounds(150,150,250,100);
+		// texte.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 		add(texte);
 		System.out.println(texte.getColumns());
 
@@ -44,9 +43,15 @@ public class VueMetaDonnee extends JPanel {
 		 */
 
 	}
+
 	/*
 	 * public void paintComponent(Graphics g) {
 	 * 
 	 * }
 	 */
+
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+
+	}
 }

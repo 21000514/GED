@@ -2,6 +2,6 @@ package Modele;
 
 import java.util.Observable;
 
-public class ModeleListe extends Observable {
+public class Lecture extends Observable {
 
 }

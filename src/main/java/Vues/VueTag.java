@@ -1,22 +1,22 @@
 package Vues;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.border.TitledBorder;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
-public class VueTag extends JPanel {
+public class VueTag extends JPanel implements Observer {
 	public VueTag() {
-		setBorder(new TitledBorder("Tags")); // Titre du panel
-		setOpaque(false);
 		TableModel dataModel = new AbstractTableModel() {
 			public int getColumnCount() {
 				return 1;
 			}
 
 			public int getRowCount() {
-				return 15;
+				return 11;
 			}
 
 			public Object getValueAt(int row, int col) {
@@ -24,8 +24,14 @@ public class VueTag extends JPanel {
 			}
 		};
 
-		JTable listeTags = new JTable(dataModel);
-		this.add(listeTags);
+		JTable tableTag = new JTable(dataModel);
+		tableTag.getColumnModel().getColumn(0).setPreferredWidth(125);
+		this.add(tableTag);
+
+	}
+
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
 
 	}
 }

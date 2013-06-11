@@ -5,21 +5,37 @@ import java.util.Observable;
 
 public class ModeleApplication extends Observable {
 
-	// private ArrayList<ModeleMetadonnee> listeMetaDonnees;
-	private ModeleMetadonnee modeleMetadonnee;
+	// private ArrayList<Metadonnee> listeMetaDonnees;
+	private Metadonnee metadonnee;
+	private Liste liste;
 
 	public ModeleApplication() {
-		// ArrayList<ModeleMetadonnee> listeMetaDonnees = new
-		// ArrayList<ModeleMetadonnee>();
-		modeleMetadonnee = new ModeleMetadonnee(new File("docs//test1.txt"));
+		// ArrayList<Metadonnee> listeMetaDonnees = new
+		// ArrayList<Metadonnee>();
+		metadonnee = new Metadonnee(new File("docs//test1.txt"));
+		liste = new Liste();
 	}
 
-	public ModeleMetadonnee getModeleMetadonnee() {
-		return modeleMetadonnee;
+	public Metadonnee getMetadonnee() {
+		return metadonnee;
+	}
+
+	public Liste getListe() {
+		return liste;
 	}
 
 	/*
-	 * public ArrayList<ModeleMetadonnees> getTitres(ModeleSerie serie) { return
-	 * }
+	 * public ArrayList<Metadonnees> getTitres(Serie serie) { return }
 	 */
+	public void notifyObserver(String str) {
+		/*
+		 * if(str.matches("^0[0-9]+")) str = str.substring(1, str.length());
+		 * 
+		 * for(Observer obs : listObserver) obs.update(str);
+		 */
+	}
+
+	public void removeObserver() {
+		// listObserver = new ArrayList<Observer>();
+	}
 }

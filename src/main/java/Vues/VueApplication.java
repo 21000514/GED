@@ -9,42 +9,32 @@ import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
-import Modele.ModeleApplication;
+import Modele.BDApplication;
+import Modele.Metadonnee;
 
 public class VueApplication extends JFrame implements Observer {
-	private ModeleApplication modeleApplication;
 	private final static int LARG_ECRAN = 900;
-	private final static int HAUT_ECRAN = 700;
-
-	/*
-	 * panelTags.setBackground(Color.white);
-	 * panelSeries.setBackground(Color.white);
-	 * panelCommandes.setBackground(Color.white);
-	 * panelLecture.setBackground(Color.white);
-	 * panelListe.setBackground(Color.white); panelApercu.setBackground(new
-	 * Color(49, 56, 104));
-	 */
-
+	private final static int HAUT_ECRAN = 650;
+	private BDApplication bDApplication;
 	private JPanel panelGlobal;
-	// private JPanel panelInfo; //Creer un nouveau borderlayout
 	private VueTag panelTags;
 	private VueSeries panelSeries;
 	private VueCommandes panelCommandes;
 	private VueLecture panelLecture;
 	private VueListe panelListe;
-	private VueMetaDonnee panelApercu;
+	private VueMetaDonnee panelMetaDonnee;
 	private VueRecherche panelRecherche;
 
-	public VueApplication(String parT, ModeleApplication modeleApplication) {
+	public VueApplication(String parT, BDApplication bDApplication) {
 		super(parT);
-		this.modeleApplication = modeleApplication;
-		initComponents();
-		// this.paintComponent(this.getGraphics());
+		this.bDApplication = bDApplication;
+		initComponents(); // Initialisation des composants
 		setSize(LARG_ECRAN, HAUT_ECRAN);
-		setResizable(false);
+		setLocationRelativeTo(null);// centrage de la fenetre principale
+		setResizable(false); // Redimensionnement interdit
 		this.repaint();
-
 		pack(); // Redimensionne la fenetre a la taille de son contenu
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -61,17 +51,34 @@ public class VueApplication extends JFrame implements Observer {
 		panelSeries = new VueSeries();
 		panelCommandes = new VueCommandes();
 		panelLecture = new VueLecture();
-		panelListe = new VueListe();
+		panelListe = new VueListe(bDApplication.getListe());
 		panelRecherche = new VueRecherche();
-		panelApercu = new VueMetaDonnee(modeleApplication.getModeleMetadonnee());
+		panelMetaDonnee = new VueMetaDonnee(new Metadonnee());
 
 		/* Background */
-		panelGlobal.setBackground(new Color(12, 65, 127));
 		/*
-		 * ImageIcon icon = new ImageIcon("img//gdeFond10.jpg"); JLabel img =
-		 * new JLabel(icon);
+		 * ImageIcon icon = new ImageIcon("img//gdeFond3.jpg"); JLabel img = new
+		 * JLabel(icon); add(img);
 		 */
-		// panelGlobal.add(img);
+		panelGlobal.setBackground(new Color(12, 65, 127));
+		// panelGlobal.setBackground(Color.black);
+		panelMetaDonnee.setBackground(new Color(227, 231, 244));
+		panelListe.setOpaque(false);
+		panelRecherche.setOpaque(false);
+		panelSeries.setBackground(new Color(227, 231, 244));
+		panelTags.setOpaque(false);
+		panelCommandes.setOpaque(false);
+		panelLecture.setBackground(new Color(227, 231, 244));
+		/* Titres */
+		panelMetaDonnee.setBorder(new TitledBorder("Métadonnées"));
+		panelSeries.setBorder(new TitledBorder("Series")); // Titre du panel
+		TitledBorder tRech = new TitledBorder("Recherche");
+		tRech.setTitleColor(Color.white);
+		panelRecherche.setBorder(tRech);
+		TitledBorder tTag = new TitledBorder("Tags");
+		tTag.setTitleColor(Color.white);
+		panelTags.setBorder(tTag);
+
 		/* GridBagLayout */
 		panelGlobal.setLayout(new GridBagLayout());
 		GridBagConstraints gBCons = new GridBagConstraints();
@@ -84,41 +91,48 @@ public class VueApplication extends JFrame implements Observer {
 		gBCons.gridy = 0;
 		panelCommandes.setPreferredSize(new Dimension(LARG_ECRAN * 3 / 4,
 				HAUT_ECRAN / 12));
-		panelGlobal.add(panelCommandes, gBCons);
+		panelGlobal.add(panelCommandes, gBCons); // ajout de panelCommandes
 		gBCons.gridx = 1;
 		panelRecherche.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
 				HAUT_ECRAN / 12));
-		panelGlobal.add(panelRecherche, gBCons);
+		panelGlobal.add(panelRecherche, gBCons);// ajout de panelRecherche
 		gBCons.gridheight = 2;
 		gBCons.gridx = 0;
 		gBCons.gridy = 1;
 		panelLecture.setPreferredSize(new Dimension(LARG_ECRAN * 3 / 4,
 				HAUT_ECRAN * 9 / 12));
-		panelGlobal.add(panelLecture, gBCons);
+		panelGlobal.add(panelLecture, gBCons);// ajout de panelLecture
 		gBCons.gridheight = 1;
 		gBCons.gridx = 1;
-		panelApercu.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
-				HAUT_ECRAN * 4 / 12));
-		panelGlobal.add(panelApercu, gBCons);
+		panelMetaDonnee.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
+				HAUT_ECRAN * 5 / 12));
+		panelGlobal.add(panelMetaDonnee, gBCons);// ajout de panelMetaDonnee
 		gBCons.gridy = 2;
 		panelTags.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
-				HAUT_ECRAN * 5 / 12));
-		panelGlobal.add(panelTags, gBCons);
+				HAUT_ECRAN * 4 / 12));
+		panelGlobal.add(panelTags, gBCons);// ajout de panelTags
 		gBCons.gridx = 0;
 		gBCons.gridy = 3;
 		panelListe.setPreferredSize(new Dimension(LARG_ECRAN * 3 / 4,
 				HAUT_ECRAN * 3 / 12));
-		panelGlobal.add(panelListe, gBCons);
+		panelGlobal.add(panelListe, gBCons);// ajout de panelListe
 
 		// gBCons.gridheight = 1;
 		gBCons.gridx = 1;
 		panelSeries.setPreferredSize(new Dimension(LARG_ECRAN * 1 / 4,
 				HAUT_ECRAN * 3 / 12));
-		panelGlobal.add(panelSeries, gBCons);
+		panelGlobal.add(panelSeries, gBCons);// ajout de panelSeries
 
 	}
 
-	@Override
+	public VueListe getVueListe() {
+		return panelListe;
+	}
+
+	public VueCommandes getVueCommande() {
+		return panelCommandes;
+	}
+
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 

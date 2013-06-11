@@ -2,11 +2,11 @@ package Modele;
 
 import java.util.Observable;
 
-public class ModeleTag extends Observable {
+public class Serie extends Observable {
 
 	private String nom;
 
-	public ModeleTag(String nom) {
+	public Serie(String nom) {
 		this.nom = nom;
 	}
 
